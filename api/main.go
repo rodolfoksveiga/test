@@ -6,7 +6,6 @@ import (
 )
 
 func bbbbb() {
-	config.ConnectDB()
 	config.MigrateDB()
 }
 
