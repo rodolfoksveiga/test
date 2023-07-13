@@ -1,0 +1,9 @@
+apiVersion: v2
+name: database
+description: The database of the Gin Gonic's chart
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+maintainers:
+  - email: rodolfoksveiga@gmail.com
+    name: Rodolfo Kirch Veiga

@@ -1,0 +1,8 @@
+namespace: rodox
+replicasCount: 1
+image:
+  tag: 14.1-alpine
+capacity:
+  storage: 200Mi
+service:
+  port: 5432

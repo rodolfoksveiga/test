@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rodolfoksveiga/k8s-gin
+    targetRevision: HEAD # gets always the last commit from the repo
+    path: infra # path to sync in the git repo
+  destination:
+    server: https://kubernetes.default.svc # internal service name of kubernetes server
+    namespace: namaste-rodox
+  syncPolicy:
+    automated:
+      selfHeal: true # argocd sync manual changes with the git repo
+      prune: true # if a yaml file is deleted, delete the resource
+    syncOptions:
+      - CreateNamespace=true # create namespace if it doesn't exist

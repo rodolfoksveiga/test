@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-deployment
+  namespace: namaste-{{ .Values.namespace }}
+  labels:
+    tier: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicasCount }}
+  selector:
+    matchLabels:
+      tier: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        tier: {{ .Chart.Name }}
+    spec:
+      containers:
+        - image: rodolfoksveiga/gin:{{ .Values.image.tag }}
+          name: {{ .Chart.Name }}
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: {{ .Chart.Name }}-secret
+            - configMapRef:
+                name: {{ .Chart.Name }}-config-map
+          volumeMounts:
+            - name: logs
+              mountPath: /var/log
+      volumes:
+        - name: logs
+          hostPath:
+            path: /var/log

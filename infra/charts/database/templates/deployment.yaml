@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-deployment
+  namespace: namaste-{{ .Values.namespace }}
+  labels:
+    tier: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicasCount }}
+  selector:
+    matchLabels:
+      tier: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        tier: {{ .Chart.Name }}
+    spec:
+      containers:
+        - image: postgres:{{ .Values.image.tag }}
+          name: {{ .Chart.Name }}
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: {{ .Chart.Name }}-secret
+          volumeMounts:
+            - name: storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: {{ .Chart.Name }}-persistent-volume-claim

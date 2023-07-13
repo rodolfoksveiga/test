@@ -1,0 +1,10 @@
+namespace: rodox
+replicasCount: 1
+image:
+  tag: latest
+capacity:
+  storage: 200Mi
+service:
+  port: 8080
+domain: mayflower.de
+subdomain: api

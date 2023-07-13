@@ -1,0 +1,5 @@
+namespace: rodox
+replicasCount: 1
+domain: mayflower.de
+admins:
+  - rodolfo.veiga

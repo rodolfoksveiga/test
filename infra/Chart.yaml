@@ -1,0 +1,14 @@
+apiVersion: v2
+name: infrastructure
+description: A Helm chart for Gin Gonic
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+maintainers:
+  - email: rodolfoksveiga@gmail.com
+    name: Rodolfo Kirch Veiga
+dependencies:
+  - name: database
+    version: 0.1.0
+  - name: backend
+    version: 0.1.0
