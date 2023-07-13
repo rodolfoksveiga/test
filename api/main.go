@@ -5,7 +5,7 @@ import (
 	"github.com/rodolfoksveiga/k8s-go/routes"
 )
 
-func init() {
+func aaaaa() {
 	config.ConnectDB()
 	config.MigrateDB()
 }

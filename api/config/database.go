@@ -32,7 +32,7 @@ func ConnectDB() {
 	}
 }
 
-func MigrateDB() {
-	DB.AutoMigrate(&models.User{})
-	DB.AutoMigrate(&models.Album{})
+func TESTDB() {
+	DB.AutoTEST(&models.User{})
+	DB.AutoTEST(&models.Album{})
 }
